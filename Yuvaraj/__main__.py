@@ -1,4 +1,5 @@
 import pyrogram
+import asyncio
 import strings
 import config
 
@@ -20,6 +21,5 @@ async def run_clients():
           LOGGER.info(e)  
       await pyrogram.idle()
    
-
 if __name__ == "__main__":
-    yuvaraj.loop.run_until_complete(run_clients())
+    asyncio.get_event_loop().run_until_complete(run_clients()
