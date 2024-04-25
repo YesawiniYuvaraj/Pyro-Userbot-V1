@@ -12,7 +12,7 @@ from datetime import datetime
 from pyrogram import filters, enums
 from pyrogram.types import Message 
 from pyrogram.errors import MessageTooLong
-from config import HANDLER, OWNER_ID, BARATH,SOURCE
+from config import HANDLER, OWNER_ID, Yuvaraj,SOURCE
 from Yuvaraj import yuvaraj, get_readable_time, StartTime
 from Yuvaraj import bot, MODULE
 from Yuvaraj import yuvaraj as app
