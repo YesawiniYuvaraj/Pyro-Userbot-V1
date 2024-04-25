@@ -3,7 +3,7 @@ import asyncio
 import strings
 import config
 
-from Yuvaraj import bot , yuvaraj, LOGGER
+from Yuvaraj import bot , yuvaraj
 from Yuvaraj.helpers.help_func import get_datetime 
 
 async def run_clients():
