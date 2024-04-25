@@ -5,7 +5,7 @@ from config import HANDLER, OWNER_ID, YUVARAJ,SOURCE
 
 @app.on_message(filters.command("help", prefixes=HANDLER) & filters.me)
 async def help_command(client, message):
-    await message.reply_photo(
+    await query.message.reply_photo(
         photo="https://graph.org/file/ce692dfc420ddb469fa0b.jpg",
         caption="Userbots Command",
         reply_markup=InlineKeyboardMarkup(
