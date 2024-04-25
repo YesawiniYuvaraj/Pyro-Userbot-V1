@@ -5,6 +5,7 @@ from config import HANDLER, OWNER_ID, YUVARAJ,SOURCE
 
 @app.on_message(filters.command("help",prefixes=HANDLER) & filters.me)
 async def help_command(client, message):
+    await query.message.reply_text(plugins_list, quote=True)
     plugins_list = """
 Yuvaraj-UserBot Plugins
 +------------+------------+
@@ -37,5 +38,3 @@ Yuvaraj-UserBot Plugins
 | vulgar     | weather    |
 +------------+------------+
 """
-async def my_function():
-    await query.message.reply_text(plugins_list, quote=True)
