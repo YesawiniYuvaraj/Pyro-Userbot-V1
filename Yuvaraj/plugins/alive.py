@@ -2,15 +2,15 @@ import time
 import random 
 import asyncio
 import config
-from config import HANDLER, OWNER_ID, YUVARAJ,SOURCE
-from pyrogram import filters, version as pyrover, enums
+from config import HANDLER, OWNER_ID, BARATH,SOURCE
+from pyrogram import filters, __version__ as pyrover, enums
 from Yuvaraj import yuvaraj, get_readable_time, StartTime
 from Yuvaraj import bot, MODULE
 
 async def alive():
     start_time = time.time()
     katsuki = "3.01"
-    user = await yuvaraj.get_me()
+    user = await barath.get_me()
     name = user.first_name
     username = user.username
     user_profile_link = f"https://t.me/{username}" if username else ""
@@ -23,7 +23,7 @@ async def alive():
     ALIVE_TEX = "ɪ ᴀᴍ ᴀʟɪᴠᴇ ᴍᴀꜱᴛᴇʀ"
     EMOTES = ["😍", "💀", "😊", "👋", "🎉", "🔥", "🌟", "💫", "🚀", "🤖", "👻", "👾", "🧡"]
 
-    photo_url = "https://graph.org/file/92c42add42b6e1d27d7a2.jpg"
+    photo_url = "https://graph.org/file/d023b9121cbdcf68733c0.mp4"
     
     ALIVE_TEXT = f"""{ALIVE_TEX}
 ▰▱▰▱▰▱▰▱▰▱▰▱▰
@@ -36,7 +36,7 @@ async def alive():
 
 <b>ᴜꜱᴇʀʙᴏᴛ</b> {user_hyperlink}
 
-<b>Source: <a href='{SOURCE}'>Yuvarajub</a></b>"""
+<b>Made By: <a href='{SOURCE}'>Yuvaraj</a></b>"""
 
 
     return ALIVE_TEXT, photo_url
@@ -68,20 +68,20 @@ async def ping(_, message):
     end_time = time.time()
     ping_time = round((end_time - start_time) * 1000, 3)
     uptime = get_readable_time((time.time() - StartTime))
-    await msg.edit(f"I Aᴍ Aʟɪᴠᴇ Mᴀꜱᴛᴇʀ\n⋙ 🔔 ᑭｴƝG: {ping_time}\n⋙ ⬆️ ⴑⲢⲦⲒⲘⲈ: {uptime}")
+    await msg.edit(f"**I Aᴍ Aʟɪᴠᴇ Mᴀꜱᴛᴇʀ**\n⋙ 🔔 **ᑭｴƝG**: {ping_time}\n⋙ ⬆️ **ⴑⲢⲦⲒⲘⲈ**: {uptime}")
     try:
         await message.delete()
     except:
         return
 
 
-mod_name = "STATUS"  
+__mod_name__ = "STATUS"  
     
-help = """  
+__help__ = """  
 - alive: to check bot on/off
 - ping: check response of server
 """  
 
 
-string = {"module": mod_name, "help": help}   
+string = {"module": __mod_name__, "help": __help__}   
 MODULE.append(string)
