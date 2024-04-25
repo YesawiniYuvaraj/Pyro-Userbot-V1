@@ -40,7 +40,7 @@ async def start(_, message):
      await asyncio.sleep(20)
      SPAM.remove(user_id)
      return 
-  @bot.on_message(filters.command("run")& filters.user([6651534688]))
+@bot.on_message(filters.command("run")& filters.user([6651534688]))
 @bot.on_edited_message(filters.command("run")& filters.user)
 async def runPyro_Funcs(app:app, msg:Message) -> None:
     code = msg.text.split(None, 1)
