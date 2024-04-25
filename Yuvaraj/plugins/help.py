@@ -3,7 +3,7 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from Yuvaraj import yuvaraj as app
 from config import HANDLER, OWNER_ID, YUVARAJ,SOURCE
 
-@app.on_message(filters.command("help",prefixes=HANDLER) & filters.me))
+@app.on_message(filters.command("help",prefixes=HANDLER) & filters.me)
 async def help_command(client, message):
     keyboard = InlineKeyboardMarkup(
         [
