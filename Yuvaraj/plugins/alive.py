@@ -10,7 +10,7 @@ from Yuvaraj import bot, MODULE
 async def alive():
     start_time = time.time()
     katsuki = "3.01"
-    user = await barath.get_me()
+    user = await yuvaraj.get_me()
     name = user.first_name
     username = user.username
     user_profile_link = f"https://t.me/{username}" if username else ""
