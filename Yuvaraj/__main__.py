@@ -7,7 +7,7 @@ from Yuvaraj.helpers.help_func import get_datetime
 
 async def run_clients():
       await bot.start()
-      await yuvarj.start()
+      await yuvaraj.start()
       await pyrogram.idle()
       zone = await get_datetime()
       await bot.send_message(
