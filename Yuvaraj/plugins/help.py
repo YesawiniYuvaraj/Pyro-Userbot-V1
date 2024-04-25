@@ -1,11 +1,12 @@
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from Yuvaraj import yuvaraj as app
+from config import HANDLER, OWNER_ID, YUVARAJ,SOURCE
 
-@app.on_message(filters.command("help") & filters.me)
+@app.on_message(filters.command("help", prefixes=HANDLER) & filters.me)
 async def help_command(client, message):
     await message.reply_photo(
-        photo="https://graph.org/file/1e72778874e0dc62416f1.mp4",
+        photo="https://graph.org/file/ce692dfc420ddb469fa0b.jpg",
         caption="Userbots Command",
         reply_markup=InlineKeyboardMarkup(
             [
