@@ -5,35 +5,37 @@ from config import HANDLER, OWNER_ID, YUVARAJ,SOURCE
 
 @app.on_message(filters.command("help",prefixes=HANDLER) & filters.me)
 async def help_command(client, message):
-    keyboard = InlineKeyboardMarkup(
-        [
-            [
-                InlineKeyboardButton("Plugins", callback_data="plug"),
-                InlineKeyboardButton("Bot", callback_data="bot")
-            ]
-        ]
-    )
-    await message.reply_photo(
-        photo="https://graph.org/file/ce692dfc420ddb469fa0b.jpg",
-        caption="Userbots Command",
-        reply_markup=keyboard
-    )
+    plugins_list = """
+Yuvaraj-UserBot Plugins
++------------+------------+
+| Autopic    | admin      |
+| afk        | animation  |
+| anime_cf   | antipm     |
+| autoscroll | broadcast  |
+| carbon     | clone      |
+| create     | dictionary |
+| dmspam     | emoji      |
+| git        | globals    |
+| google     | info       |
+| invite     | joinleave  |
+| locks      | lyrics     |
+| memify     | mention    |
+| metrics    | music      |
+| paste      | pats       |
+| ping       | profile    |
+| purge      | quotly     |
+| raid       | replyraid  |
+| restart    | sangmata   |
+| screenshot | spam       |
+| start      | stats      |
+| sticker    | stickers   |
+| sudos      | tag        |
+| tagalert   | tagall     |
+| telegraph  | text       |
+| tiny       | unsplash   |
+| upload     | vctools    |
+| vulgar     | weather    |
++------------+------------+
+"""
 
-# Define a callback handler for inline keyboard buttons
-@app.on_callback_query()
-async def callback_handler(client, query):
-    if query.data == "plug":
-        await query.message.edit_reply_markup(
-            reply_markup=InlineKeyboardMarkup(
-                [
-                    [
-                        InlineKeyboardButton("Alive", callback_data="al"),
-                        InlineKeyboardButton("Ping", callback_data="ping")
-                    ]
-                ]
-            )
-        )
-    elif query.data == "al":
-        await query.message.edit_text("Use /alive")
-    elif query.data == "ping":
-        await query.message.edit_text("Use /ping")
+await query.message.reply_text(plugins_list, quote=True)
