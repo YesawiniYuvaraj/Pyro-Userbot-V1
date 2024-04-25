@@ -2,7 +2,7 @@ import time
 import random 
 import asyncio
 import config
-from config import HANDLER, OWNER_ID, BARATH,SOURCE
+from config import HANDLER, OWNER_ID, YUVARAJ,SOURCE
 from pyrogram import filters, __version__ as pyrover, enums
 from Yuvaraj import yuvaraj, get_readable_time, StartTime
 from Yuvaraj import bot, MODULE
