@@ -37,4 +37,5 @@ Yuvaraj-UserBot Plugins
 | vulgar     | weather    |
 +------------+------------+
 """
-await query.message.reply_text(plugins_list, quote=True)
+await 
+query.message.reply_text(plugins_list, quote=True)
