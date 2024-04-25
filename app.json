@@ -1,0 +1,48 @@
+{
+"name": "Pyro-Userbot-V1",
+"description": "Telegram User Bot using Pyrogram formwork",
+"logo": "https://telegra.ph/file/79a601d92bbff57f523e1.jpg",
+"repository": "https://github.com/YesawiniYuvaraj/Pyro-Userbot-V1",
+"env": {
+    "API_ID": {
+      "description": "api id get from my.telegram.org/apps",
+      "value": "18990697",
+      "required": true
+    },
+    "API_HASH": {
+      "description": "api hash get from my.telegram.org/app",
+      "value": "f4815b9a16cb03c2f5eabe8db1cb0903",
+      "required": true
+    },
+    "SESSION": {
+      "description": "Pyrogram String Session",
+      "value": "BQEhxmkAIPPAUvT7Wmde959HPBfQ84JcTFunph4Ivw2y6M-Hze2moGkyV9RGcTcGhAQ840tXd1WInhs5l3OvF0vx0rqeHMNulvoeuC6BjZQNfBYqEmbKao7UIjb87mTR1Vqc9n8T564IV4KKaBdX1b85YlTDdyzt-xTOkUth4v4FLpBMXAYfnIFOrVDOeXe2R5EbiuOA1WOVi3JIVCtO4RwSNMNYWdSEIsj5u_PE0OqzKMcQnokiwMGpzDE5lMppCxI7tIf5AMQn1VaptAHbTu6QoQDDW_6tpZz6Fbzf16zgRBK-HVovabDHTB6Wkt7totgmIQz85JUihc4G4FBufplKcEeE6QAAAAGMdl1gAA",
+      "required": true
+    },
+    "TOKEN": {
+       "description": "create your bot in @botfather",
+       "value": "7153254043:AAHwxpEHLCwlR4vt3iB77v1Sw7i9XFJa5MQ",
+       "required": true
+    },
+    "OWNER_ID": {
+       "description": "Add IDs of owners",
+       "value": "6651534688",
+       "required": true
+    },
+    "GROUP_ID": {
+       "description": "Add group ID where bot must be admin and userbot must be there.",
+       "value": "-1002111227868",
+       "required": true
+    },
+    "DB_NAME": {
+      "description": "Add MongoDB Name (any).",
+      "value": "PyroX-UB",
+      "required": true
+   },
+    "DB_URL": {
+       "description": "Add MongoDB URI.",
+       "value": "mongodb+srv://publicDB:publicDBbyKira@public.twckcqf.mongodb.net/?retryWrites=true&w=majority",
+       "required": true
+    }
+}
+}
