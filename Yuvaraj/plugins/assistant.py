@@ -8,6 +8,7 @@ import config, strings
 import asyncio
 
 from pyrogram import filters, enums
+from pyrogram.types import Message 
 from Yuvaraj import bot, INFO , yuvaraj
 from Yuvaraj.helpers.help_func import emoji_convert
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
