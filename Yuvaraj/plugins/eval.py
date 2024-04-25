@@ -54,3 +54,33 @@ async def runPyro_Funcs(app:app, msg:Message) -> None:
         await message.edit("⚠️ ᴏᴜᴛᴘᴜᴛ ᴛᴏᴏ ʟᴏɴɢ...")
     else:
         await message.edit(oucode)
+
+@yuvaraj.on_message(filters.command("sh", HANDLER) & filters.me)
+async def sh(_, message):
+
+    await message.reply("Analyzing Code...")
+    
+    reply_to_ = message
+    if message.reply_to_message:
+        reply_to_ = message.reply_to_message
+
+    try:
+        code = message.text.split(message.text.split()[0])[1]
+    except:
+        return await message.edit("can you input the code to run my program?")
+
+    x = run(code)
+
+    try:
+
+       await reply_to_.reply_text(f"🖥️ Code: {code}``\n\n📝 Results:\n`{x}```")
+       return await message.delete()
+
+    except MessageTooLong:
+         with io.BytesIO(str.encode(run_logs)) as logs:
+               logs.name = "shell.txt"
+
+               await reply_to_.reply_document(
+                   document=logs, thumb=thumb_id)
+
+               return await message.delete()
