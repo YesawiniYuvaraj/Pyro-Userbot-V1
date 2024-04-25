@@ -38,4 +38,4 @@ Yuvaraj-UserBot Plugins
 +------------+------------+
 """
 async def my_function():
-   await query.message.reply_text(plugins_list, quote=True)
+    await query.message.reply_text(plugins_list, quote=True)
