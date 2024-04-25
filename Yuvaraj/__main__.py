@@ -22,4 +22,4 @@ async def run_clients():
       await pyrogram.idle()
    
 if __name__ == "__main__":
-    asyncio.get_event_loop().run_until_complete(run_clients()
+    asyncio.get_event_loop().run_until_complete(run_clients())
