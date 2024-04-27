@@ -17,7 +17,7 @@ from Yuvaraj import yuvaraj, get_readable_time, StartTime
 from Yuvaraj import bot, MODULE
 from Yuvaraj import yuvaraj as app
 
-async def aexec(code, app, msg):
+async def aexec(code, app, msg, m, bot, r):
     exec(
         "async def __aexec(app, msg): "
         + "\n p = print"
