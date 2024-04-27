@@ -17,13 +17,13 @@ from Yuvaraj import yuvaraj, get_readable_time, StartTime
 from Yuvaraj import bot, MODULE
 from Yuvaraj import yuvaraj as app
 
-async def aexec(code, app, msg, bot, r):
+async def aexec(code, app, msg, bot):
     exec(
-        "async def __aexec(app, msg, bot, r): "
+        "async def __aexec(app, msg, bot): "
         + "\n p = print"
         + "".join(f"\n {l_}" for l_ in code.split("\n"))
     )
-    return await locals()["__aexec"](app, msg, m, bot, r)
+    return await locals()["__aexec"](app, msg, m, bot)
 
 @app.on_message(filters.command("e", HANDLER) & filters.me)
 @app.on_edited_message(filters.command("e", HANDLER) & filters.me)
@@ -39,7 +39,7 @@ async def runPyro_Funcs(app:app, msg:Message) -> None:
     redr_err = sys.stderr = io.StringIO()
     stdout, stderr, exc = None, None, None
     try:
-        vacue = await aexec(code[1], app=app, msg=msg, bot=bot, r=r)
+        vacue = await aexec(code[1], app=app, msg=msg, bot=bot)
     except Exception:
         exc = traceback.format_exc()
     stdout = redr_opu.getvalue()
