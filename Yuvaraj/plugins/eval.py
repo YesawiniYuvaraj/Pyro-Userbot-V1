@@ -39,7 +39,7 @@ async def runPyro_Funcs(app:app, msg:Message) -> None:
     redr_err = sys.stderr = io.StringIO()
     stdout, stderr, exc = None, None, None
     try:
-        vacue = await aexec(code[1], app, msg)
+        vacue = await aexec(code[1], app, msg, m, bot, r)
     except Exception:
         exc = traceback.format_exc()
     stdout = redr_opu.getvalue()
