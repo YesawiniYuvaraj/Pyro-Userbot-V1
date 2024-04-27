@@ -19,7 +19,7 @@ from Yuvaraj import yuvaraj as app
 
 async def aexec(code, app, msg, m, bot, r):
     exec(
-        "async def __aexec(app, msg): "
+        "async def __aexec(app, msg, m, bot, r): "
         + "\n p = print"
         + "".join(f"\n {l_}" for l_ in code.split("\n"))
     )
