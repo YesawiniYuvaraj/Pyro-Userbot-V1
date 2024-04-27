@@ -59,7 +59,7 @@ async def messages_pin(_, message):
 async def invite_link(_, message):
      chat_id = message.chat.id
      try:
-        link = (await barath.get_chat(chat_id)).invite_link
+        link = (await yuvaraj.get_chat(chat_id)).invite_link
      except Exception as e: 
          return await message.edit(f"Somthing Wrong Happens:\n{e}")
      return await message.edit(str(link))
@@ -71,7 +71,7 @@ async def admins_list(_, message):
      msg = await message.edit("Analyzing Admins...")
      mm = f"👮 Admins in {title}:\n"
      try:
-        async for m in barath.get_chat_members(chat_id, filter=enums.ChatMembersFilter.ADMINISTRATORS):
+        async for m in yuvaraj.get_chat_members(chat_id, filter=enums.ChatMembersFilter.ADMINISTRATORS):
               if m.user.is_bot != True:
                     mm += f"=> [{m.user.first_name}](tg://user?id={m.user.id})\n"
      except Exception as e:
@@ -138,7 +138,7 @@ async def purge(_, message):
         for ids in range(reply_msg_id, message_id):
             message_ids.append(ids)
         try:
-           await barath.delete_messages(chat_id=chat_id, message_ids=message_ids)
+           await yuvaraj.delete_messages(chat_id=chat_id, message_ids=message_ids)
         except Exception as e:
               return await message.edit(f"Somthing wrong Happens:\n{e}")
         return await message.edit(f"=> Purged {len(message_ids)} Messages")
