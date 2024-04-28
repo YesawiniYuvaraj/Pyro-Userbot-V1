@@ -5,7 +5,7 @@ from config import HANDLER, OWNER_ID, YUVARAJ,SOURCE
 
 @app.on_message(filters.command("help",prefixes=HANDLER) & filters.me)
 async def help_command(client, message):
-    await query.message.reply_text("Yuvaraj-UserBot Plugins\n"
+    await message.reply_text("Yuvaraj-UserBot Plugins\n"
     "+------------+------------+\n"
     "| Autopic    | admin      |\n"
     "| afk        | animation  |\n"
