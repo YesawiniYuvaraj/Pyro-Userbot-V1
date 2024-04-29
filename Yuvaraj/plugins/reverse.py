@@ -3,10 +3,11 @@ from pyrogram import Client, filters
 from pyrogram.types import (InlineKeyboardMarkup, InlineKeyboardButton, Message)
 import httpx
 from Yuvaraj import yuvaraj as app
+from config import HANDLER, OWNER_ID, YUVARAJ,SOURCE
 
 COMMANDS = ['reverse', 'grs', 'pp']
 
-@app.on_message(filters.command(COMMANDS))
+@app.on_message(filters.command("COMMANDS",prefixes=HANDLER) & filters.me)
 async def on_reverse(client: Client, message: Message) -> Message:
     if not message.reply_to_message or not message.reply_to_message.media:
         await message.reply(STRINGS.REPLY_TO_MEDIA)
