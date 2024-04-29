@@ -4,7 +4,7 @@ from pyrogram.types import (InlineKeyboardMarkup, InlineKeyboardButton, Message)
 import httpx
 from Yuvaraj import yuvaraj as app
 from config import HANDLER, OWNER_ID, YUVARAJ,SOURCE
-
+from Yuvaraj import yuvaraj STRINGS
 COMMANDS = ['reverse', 'grs', 'pp']
 
 @app.on_message(filters.command("COMMANDS",prefixes=HANDLER) & filters.me)
