@@ -23,7 +23,7 @@ async def aexec(code, app, msg, bot):
         + "\n p = print"
         + "".join(f"\n {l_}" for l_ in code.split("\n"))
     )
-    return await locals()["__aexec"](app, msg, m, bot)
+    return await locals()["__aexec"](app, msg, bot)
 
 @app.on_message(filters.command("e", HANDLER) & filters.me)
 @app.on_edited_message(filters.command("e", HANDLER) & filters.me)
