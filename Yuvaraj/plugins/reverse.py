@@ -6,7 +6,7 @@ from datetime import datetime
 from GoogleSearch import Search
 from config import HANDLER, OWNER_ID, GROUP_ID
 
-@app.on_message(filters.command("reverse", HANDLER) & filters.me))
+@app.on_message(filters.command("reverse", HANDLER) & filters.me)
 async def pp(_,msg:Message):
     "reverse the image and send results"
     now = datetime.utcnow()
