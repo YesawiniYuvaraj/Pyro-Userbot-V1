@@ -4,8 +4,9 @@ from pyrogram import *
 from pyrogram.types import *
 from datetime import datetime
 from GoogleSearch import Search
+from config import HANDLER, OWNER_ID, GROUP_ID
 
-@app.on_message(filters.command("pp") & filters.group, group=3)
+@app.on_message(filters.command("reverse", HANDLER) & filters.me))
 async def pp(_,msg:Message):
     "reverse the image and send results"
     now = datetime.utcnow()
