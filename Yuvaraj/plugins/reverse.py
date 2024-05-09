@@ -1,5 +1,5 @@
 import os
-from YUVARAJ import yuvaraj as app 
+from Yuvaraj import yuvaraj as app 
 from pyrogram import *
 from pyrogram.types import *
 from datetime import datetime
