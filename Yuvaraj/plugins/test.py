@@ -36,7 +36,7 @@ class STRINGS:
 🔗 Page Link: {search_url}
 
 ⌛️ Time Taken: {time_taken} ms.
-🧑‍💻 Credits: @KangersNetwork
+
     """
     OPEN_SEARCH_PAGE = "↗️ Open Search Page"
 
