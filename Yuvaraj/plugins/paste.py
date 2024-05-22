@@ -25,7 +25,7 @@ async def neko_bin(content: str) -> str:
     else:
         raise Exception("Failed to paste content to Nekobin")
 
-@app.on_message(filters.command("paste",HANDLER) & filters.me)
+@app.on_message(filters.command("paste" ,HANDLER) & filters.me)
 async def paste_func(_, message):
     if not message.reply_to_message:
         return await message.reply_text("Reply To A Message With .paste")
