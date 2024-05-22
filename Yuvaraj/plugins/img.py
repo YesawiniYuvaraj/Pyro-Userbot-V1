@@ -3,6 +3,7 @@ import time
 import os
 from pyrogram import filters
 from config import HANDLER, OWNER_ID, GROUP_ID
+from Yuvaraj import yuvaraj as app 
 
 # Command handler for /generate
 @app.on_message(filters.command("gen", HANDLER) & filters.me)
