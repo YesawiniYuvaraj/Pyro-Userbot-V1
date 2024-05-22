@@ -40,7 +40,7 @@ async def vsong(client, message):
     except Exception as e:
         print(e)
     try:
-        me = await barath.get_me()
+        me = await yuvaraj.get_me()
         msg = await message.reply("**Getting Video**")
         with YoutubeDL(ydl_opts) as ytdl:
             ytdl_data = ytdl.extract_info(link, download=True)
