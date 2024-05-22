@@ -1,6 +1,8 @@
 import asyncio
 import os
 import uuid
+from config import HANDLER, OWNER_ID, YUVARAJ,SOURCE
+
 from Yuvaraj import yuvaraj as app 
 import httpx
 from pyrogram.enums import MessageMediaType
@@ -44,7 +46,7 @@ class STRINGS:
     """
     OPEN_SEARCH_PAGE = "↗️ Open Search Page"
 
-@app.on_message(filters.command(COMMANDS))
+@app.on_message(filters.command(COMMANDS, HANDLER) & filters.me)
 async def on_google_lens_search(client: Client, message: Message) -> None:
     if len(message.command) > 1:
         image_url = message.command[1]
