@@ -1,45 +1,39 @@
 import asyncio
 import os
 import uuid
-from config import HANDLER, OWNER_ID, YUVARAJ,SOURCE
-
-from Yuvaraj import yuvaraj as app 
 import httpx
+from pyrogram import Client, filters
 from pyrogram.enums import MessageMediaType
 from pyrogram.types import (
     Message,
     InlineKeyboardButton,
     InlineKeyboardMarkup
-    )
-from pyrogram import Client, filters
+)
 
-
+from config import HANDLER, OWNER_ID, YUVARAJ, SOURCE
+from Yuvaraj import yuvaraj as app
 
 ENDPOINT = "https://sasta-api.vercel.app/googleImageSearch"
 httpx_client = httpx.AsyncClient(timeout=60)
 
 COMMANDS = [
     "reverse",
-    "grs"
+    "grs",
     "gis",
     "pp"
-    ]
+]
 
 class STRINGS:
     REPLY_TO_MEDIA = "ℹ️ Please reply to a message that contains one of the supported media types, such as a photo, sticker, or image file."
     UNSUPPORTED_MEDIA_TYPE = "⚠️ Unsupported media type!\nℹ️ Please reply with a supported media type: image, sticker, or image file."
-    
     REQUESTING_API_SERVER = "📡 Requesting to API Server... 📶"
-    
     DOWNLOADING_MEDIA = "⏳ Downloading media..."
     UPLOADING_TO_API_SERVER = "📡 Uploading media to API Server... 📶"
     PARSING_RESULT = "💻 Parsing result..."
-    
     EXCEPTION_OCCURRED = "❌ Exception occurred!\n\nException: {}"
-    
     RESULT = """
 🔤 Query: {query}
-🔗 Page Link: Link
+🔗 Page Link: {search_url}
 
 ⌛️ Time Taken: {time_taken} ms.
 🧑‍💻 Credits: @KangersNetwork
@@ -69,7 +63,6 @@ async def on_google_lens_search(client: Client, message: Message) -> None:
         except Exception as exc:
             text = STRINGS.EXCEPTION_OCCURRED.format(exc)
             await message.reply(text)
-            
             try:
                 os.remove(file_path)
             except FileNotFoundError:
@@ -87,8 +80,12 @@ async def on_google_lens_search(client: Client, message: Message) -> None:
         except FileNotFoundError:
             pass
     
+    else:
+        await message.reply(STRINGS.REPLY_TO_MEDIA)
+        return
+    
     if response.status_code == 404:
-        text = STRINGS.EXCEPTION_OCCURRED.format(response.json()["error"])
+        text = STRINGS.EXCEPTION_OCCURRED.format(response.json().get("error", "Unknown error"))
         await message.reply(text)
         await status_msg.delete()
         return
@@ -100,19 +97,19 @@ async def on_google_lens_search(client: Client, message: Message) -> None:
     
     await status_msg.edit(STRINGS.PARSING_RESULT)
     response_json = response.json()
-    query = response_json["query"]
-    search_url = response_json["search_url"]
+    query = response_json.get("query", "Name not found")
+    search_url = response_json.get("search_url", "#")
     
-    end_time = asyncio.get_event_loop().time() - start_time
+    end_time = (asyncio.get_event_loop().time() - start_time) * 1000  # convert to ms
     time_taken = "{:.2f}".format(end_time)
     
     text = STRINGS.RESULT.format(
-        query=f"{query}" if query else "Name not found",
+        query=query,
         search_url=search_url,
         time_taken=time_taken
-        )
+    )
     buttons = [
         [InlineKeyboardButton(STRINGS.OPEN_SEARCH_PAGE, url=search_url)]
-        ]
+    ]
     await message.reply(text, disable_web_page_preview=True, reply_markup=InlineKeyboardMarkup(buttons))
     await status_msg.delete()
