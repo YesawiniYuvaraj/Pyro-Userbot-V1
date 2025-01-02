@@ -4,6 +4,7 @@ import logging
 from pyrogram import Client
 from pymongo import MongoClient
 import motor.motor_asyncio
+from pytgcalls import PyTgCalls
 
 FORMAT = "[Yuvaraj]: %(message)s"
 
@@ -65,11 +66,12 @@ bot = Client(name="YuvarajBot", bot_token=TOKEN, api_id=API_ID, api_hash=API_HAS
 
 
 class INFO:
-   def barath():
-      info = barath.get_me()
+   def yuvaraj():
+      info = yuvaraj.get_me()
       return info   
      
    def bot():
       info = bot.get_me()
       return info
    
+YuvarajVC= PyTgCalls(yuvaraj)
