@@ -1,5 +1,6 @@
 pyrogram
 pymongo==4.3.3
+motor
 pymongo[srv]
 asyncio==3.4.3
 gpytranslate==1.5.1
