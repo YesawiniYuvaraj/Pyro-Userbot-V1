@@ -24,7 +24,6 @@ aiohttp
 httpx
 httpx[http2]
 git+https://github.com/KurimuzonAkuma/pyrogram.git
-TgCrypto
 py-tgcalls
 matplotlib
 beautifulsoup4
@@ -35,11 +34,9 @@ SpeechRecognition
 pyttsx3
 pydub
 wikipedia
-pymongo
 google
 fuzzywuzzy
 aiohttp
-pymongo[srv]
 yt_dlp
 asyncio
 youtube_search_python
@@ -47,5 +44,4 @@ youtube_dl
 youtube_search
 python-ffmpeg
 ffmpeg
-motor==3.6.0
 gtts
