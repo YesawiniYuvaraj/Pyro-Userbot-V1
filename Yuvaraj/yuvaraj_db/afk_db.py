@@ -1,4 +1,4 @@
-from Yuvaraj import db
+from Yuvaraj import db, DATABASE
 import asyncio
 
 db = DATABASE["afk"]
