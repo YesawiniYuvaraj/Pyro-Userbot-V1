@@ -1,6 +1,5 @@
 from pyrogram.types import Message, User
 from pyrogram import Client
-from Yuvaraj.yuvaraj_db.afk_db import get_afk_status
 from Yuvaraj.yuvaraj_db.pm_db import get_approved_users, pm_guard
 import shlex
 import requests 
@@ -126,14 +125,6 @@ def get_readable_time(seconds: int) -> str:
     ping_time += ":".join(time_list)
     return ping_time
                   
-async def user_afk(filter, client: Client, message: Message):
-    check = await get_afk_status()
-    if check:
-        return True
-    else:
-        return False
-
-
 def get_arg(message):
     msg = message.text
     msg = msg.replace(" ", "", 1) if msg[1] == " " else msg
