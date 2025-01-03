@@ -2,7 +2,7 @@ import pyrogram
 import strings
 import config
 
-from Yuvaraj import bot , yuvaraj
+from Yuvaraj import yuvaraj as bot
 from Yuvaraj.helpers.help_func import get_datetime 
 from Yuvaraj.web import keep_alive, web_server
 from aiohttp import web
@@ -18,7 +18,7 @@ async def run_clients():
       await bot.send_message(
            chat_id=config.GROUP_ID,
            text=strings.RESTART_TEXT1.format(date=zone["date"], time=zone["time"]))
-      await barath.send_message(
+      await yuvaraj.send_message(
            chat_id=config.GROUP_ID,
            text=strings.RESTART_TEXT2.format(date=zone["date"], time=zone["time"]))
 
