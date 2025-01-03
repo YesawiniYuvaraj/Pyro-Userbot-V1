@@ -24,7 +24,7 @@ async def run_clients():
 
 
 if __name__ == "__main__":
-    yuvaraj.loop.run_until_complete(run_clients())
+    bot.loop.run_until_complete(run_clients())
 
 log = logging.getLogger(__name__)
 
