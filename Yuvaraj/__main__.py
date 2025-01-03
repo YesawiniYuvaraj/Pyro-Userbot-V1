@@ -5,8 +5,7 @@ from Yuvaraj import yuvaraj as bot
 from Yuvaraj.helpers.help_func import get_datetime
 from Yuvaraj.web import keep_alive, web_server
 from aiohttp import web
-import logging, os, random
-import asyncio
+import logging, os, asyncio
 import pyrogram
 
 log = logging.getLogger(__name__)
@@ -47,4 +46,18 @@ async def main():
     )
 
 if __name__ == "__main__":
-    asyncio.run(main())  # Properly initializes and runs the asyncio event loop
+    try:
+        loop = asyncio.get_event_loop()
+        if loop.is_running():
+            # Handle cases where an event loop is already running
+            log.warning("Event loop is already running. Scheduling main().")
+            asyncio.ensure_future(main())
+        else:
+            # For normal execution
+            asyncio.run(main())
+    except RuntimeError as e:
+        log.error(f"Runtime error occurred: {e}")
+        # In rare cases where the above fails, fallback to creating a new loop
+        new_loop = asyncio.new_event_loop()
+        asyncio.set_event_loop(new_loop)
+        new_loop.run_until_complete(main())
