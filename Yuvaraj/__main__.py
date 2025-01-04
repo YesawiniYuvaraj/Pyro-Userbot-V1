@@ -48,6 +48,3 @@ if __name__ == "__main__":
     try:
         loop.run_until_complete(start_services())
         loop.run_until_complete(run_clients())
-    finally:
-        logging.info("Shutting down...")
-        loop.close()
