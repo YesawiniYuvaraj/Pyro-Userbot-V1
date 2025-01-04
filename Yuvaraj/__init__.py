@@ -10,7 +10,6 @@ FORMAT = "[Yuvaraj]: %(message)s"
 
 logging.basicConfig(level=logging.INFO, handlers=[logging.FileHandler('logs.txt'),
                                                     logging.StreamHandler()], format=FORMAT)
-
 StartTime = time.time()
 
 MODULE = []
@@ -59,7 +58,7 @@ DATABASE = DB[DB_NAME]
 
 # PYROGRAM USER CLIENT 
 yuvaraj = Client(name="Yuvaraj", session_string=SESSION, api_id=API_ID, api_hash=API_HASH, plugins=dict(root="Yuvaraj"))
-
+YuvarajVc = PyTgCalls(yuvaraj)
 #PYROGRAM BOT CLIENT
 bot = Client(name="YuvarajBot", bot_token=TOKEN, api_id=API_ID, api_hash=API_HASH, plugins=dict(root="Yuvaraj"))
 
@@ -73,5 +72,3 @@ class INFO:
    def bot():
       info = bot.get_me()
       return info
-   
-YuvarajVC= PyTgCalls(yuvaraj)
