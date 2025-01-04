@@ -58,10 +58,10 @@ DATABASE = DB[DB_NAME]
 
 # PYROGRAM USER CLIENT 
 yuvaraj = Client(name="Yuvaraj", session_string=SESSION, api_id=API_ID, api_hash=API_HASH, plugins=dict(root="Yuvaraj"))
-YuvarajVc = PyTgCalls(yuvaraj)
+
 #PYROGRAM BOT CLIENT
 bot = Client(name="YuvarajBot", bot_token=TOKEN, api_id=API_ID, api_hash=API_HASH, plugins=dict(root="Yuvaraj"))
-
+YuvarajVc = PyTgCalls(yuvaraj)
 
 
 class INFO:
