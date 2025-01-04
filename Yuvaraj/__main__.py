@@ -4,7 +4,6 @@ from Yuvaraj import yuvaraj,bot
 from Yuvaraj.helpers.help_func import get_datetime
 from Yuvaraj.web import keep_alive, web_server
 from aiohttp import web
-from config import GROUP_ID
 
 # Configure logging
 logging.basicConfig(
@@ -33,11 +32,11 @@ async def run_clients():
 
         zone = await get_datetime()
         await bot.send_message(
-            chat_id=config.GROUP_ID,
+            chat_id=-1002229268481,
             text=strings.RESTART_TEXT1.format(date=zone["date"], time=zone["time"])
         )
         await yuvaraj.send_message(
-            chat_id=config.GROUP_ID,
+            chat_id=-1002229268481,
             text=strings.RESTART_TEXT2.format(date=zone["date"], time=zone["time"])
         )
 
