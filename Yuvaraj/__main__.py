@@ -14,7 +14,16 @@ logging.basicConfig(
 
 log = logging.getLogger(__name__)
 
+
+async def start_services():
+    server = web.AppRunner(web_server())
+    await server.setup()
+    await web.TCPSite(server, "0.0.0.0", 8080).start()
+    logging.info("Web server initialized successfully.")
+
+
 async def run_clients():
+
     try:
         logging.info("Starting the bot...")
         await bot.start()
@@ -37,14 +46,8 @@ async def run_clients():
     except Exception as e:
         logging.error(f"An error occurred: {e}")
 
-async def start_services():
-    server = web.AppRunner(web_server())
-    await server.setup()
-    await web.TCPSite(server, "0.0.0.0", 8080).start()
-    logging.info("Web server initialized successfully.")
 
 if __name__ == "__main__":
     loop = asyncio.get_event_loop()
-    try:
-        loop.run_until_complete(start_services())
-        loop.run_until_complete(run_clients())
+    loop.run_until_complete(start_services())
+    loop.run_until_complete(run_clients())
