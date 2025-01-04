@@ -4,6 +4,7 @@ from Yuvaraj import yuvaraj,bot
 from Yuvaraj.helpers.help_func import get_datetime
 from Yuvaraj.web import keep_alive, web_server
 from aiohttp import web
+from config import GROUP_ID
 
 # Configure logging
 logging.basicConfig(
