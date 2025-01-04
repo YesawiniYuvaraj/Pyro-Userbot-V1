@@ -2,7 +2,7 @@
 
 
 
-WEB_URL = "https://academia-aexg.onrender.com"
+WEB_URL = "https://userbot-6qna.onrender.com"
 WEB_SLLEP = 3*60
 
 
