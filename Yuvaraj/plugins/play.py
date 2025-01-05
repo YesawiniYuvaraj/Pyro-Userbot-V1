@@ -16,7 +16,7 @@ from pyrogram.types import *
 
 vcInfo = {}
 PLAYPREFIXES = HANDLER
-PLAYPREFIXES += ["/"]
+PLAYPREFIXES += ["."]
 oh = play()
 yuvaraj= bot
 async def publicFilter(_, client, message):
@@ -96,7 +96,7 @@ async def play_filter(_, client, message):
 @bot.on_message(filters.command(["play", "sp"], prefixes=PLAYPREFIXES) & filters.create(publicFilter) & filters.create(play_filter) & ~filters.private & ~filters.bot)
 async def play(_, message):
     global vcInfo, is_playing, num_queues
-    try: await SophiaVC.start()
+    try: await YuvarajVC.start()
     except: pass
     if len(message.text.split()) < 2:
         if message.reply_to_message and message.reply_to_message.audio:
@@ -122,7 +122,7 @@ async def play(_, message):
                 # Queue -------------
                 is_playing[message.chat.id] = True
                 # -------------------
-                await SophiaVC.play(message.chat.id, MediaStream(path))
+                await YuvarajVC.play(message.chat.id, MediaStream(path))
                 await asyncio.sleep(dur + 5)
                 await manage_playback(message.chat.id, f'{title} {message.id}', dur)
                 os.remove(path)
@@ -172,15 +172,14 @@ async def play(_, message):
                 f"**🥀 Title:** {title[:20] if len(title) > 20 else title}\n"
                 f"**🐬 Duration:** {dur // 60}:{dur % 60:02d} Mins\n"
                 f"**🦋 Stream Type:** Audio\n"
-                f"**👾 Requested By:** {message.from_user.first_name if not message.from_user.last_name else f'{message.from_user.first_name} {message.from_user.last_name}'}\n"
-                f"**⚕️ Join:** __@Hyper_Speed0 & @FutureCity005__"
+                f"**👾 Requested By:** {message.from_user.first_name if not message.from_user.last_name else f'{message.from_user.first_name} {message.from_user.last_name}'}"
             )
         )
         vcInfo[message.chat.id] = {"title": f'{title} {message.id}', "duration": dur}
         # Queue -------------
         is_playing[message.chat.id] = True
         # -------------------  
-        await SophiaVC.play(message.chat.id, MediaStream(audio_file))
+        await YuvarajVC.play(message.chat.id, MediaStream(audio_file))
         await asyncio.sleep(dur + 5)
         await manage_playback(message.chat.id, f'{title} {message.id}', dur)
     except Exception as e:
@@ -195,7 +194,7 @@ async def play(_, message):
 @bot.on_message(filters.command("vplay", prefixes=PLAYPREFIXES) & filters.create(publicFilter) & filters.create(play_filter) & filters.user(OWN) & ~filters.private & ~filters.bot)
 async def vplay(_, message):
     global vcInfo, is_playing, num_queues
-    try: await SophiaVC.start()
+    try: await YuvarajVC.start()
     except: pass
     if len(message.text.split()) < 2:
         if message.reply_to_message and message.reply_to_message.video:
@@ -215,7 +214,7 @@ async def vplay(_, message):
                 # Queue -------------
                 is_playing[message.chat.id] = True
                 # -------------------
-                await SophiaVC.play(message.chat.id, MediaStream(path))
+                await YuvarajVC.play(message.chat.id, MediaStream(path))
                 await asyncio.sleep(dur + 5)
                 await manage_playback(message.chat.id, f'{title} {message.id}', dur)
                 os.remove(path)
@@ -267,7 +266,7 @@ async def vplay(_, message):
         # Queue -------------
         is_playing[message.chat.id] = True
         # -------------------
-        await SophiaVC.play(message.chat.id, MediaStream(video_file))
+        await YuvarajVC.play(message.chat.id, MediaStream(video_file))
         await asyncio.sleep(duration + 5)
         await manage_playback(message.chat.id, f'{title} {message.id}', duration)
     except Exception as e:
@@ -287,14 +286,14 @@ async def manage_playback(chat_id, title, duration):
             is_playing[chat_id] = False
             num_queues[chat_id] -= 1
             if not queue_id.get(chat_id):
-                await SophiaVC.leave_call(chat_id)
+                await YuvarajVC.leave_call(chat_id)
                 vcInfo.pop(chat_id, None)
         except Exception as e: logging.error(e)
 
 @bot.on_message(filters.command("skip", prefixes=PLAYPREFIXES) & filters.create(publicFilter) & ~filters.private & ~filters.bot)
 async def skip(_, message):
     global queue_id, vcInfo, num_queues, is_playing
-    a = await Sophia.get_chat_member(message.chat.id, message.from_user.id)
+    a = await bot.get_chat_member(message.chat.id, message.from_user.id)
     if a.status == ChatMemberStatus.MEMBER or not a.privileges.can_manage_video_chats:
         return await message.reply("**You don't have enough admin rights to use this command ❌**")
     chat_id = message.chat.id
@@ -304,7 +303,7 @@ async def skip(_, message):
                 queue_id[chat_id].remove(queue_id.get(chat_id)[0])
             else:
                 await message.reply("**ℹ️ No more queues in the chat leaving...**")
-                await SophiaVC.leave_call(message.chat.id)
+                await YuvarajVC.leave_call(message.chat.id)
                 vcInfo.pop(message.chat.id, None)
                 try: queue_id[chat_id].remove(queue_id.get(chat_id)[0])
                 except: pass
