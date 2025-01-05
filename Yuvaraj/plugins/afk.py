@@ -5,7 +5,7 @@ from Restart import restart_program
 import os
 import re
 from datetime import datetime
-from Yuvaraj.yuvaraj_db.afk_db import *
+from Yuvaraj.yuvaraj_db.afk_db import SET_AFK, UNSET_AFK, GET_AFK_TIME, GET_AFK_REASON
 
 BOTS_ALLOWED_TO_WORK_IN_BUSY_COMMANDS = False
 
