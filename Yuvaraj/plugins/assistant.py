@@ -23,6 +23,8 @@ async def aexec(code, app, msg):
     )
     return await locals()["__aexec"](app, msg)
 
+SPAM = []
+
 @bot.on_message(filters.command("start") & filters.private)
 async def start(_, message):
      user_id = message.from_user.id
