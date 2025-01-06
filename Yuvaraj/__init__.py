@@ -7,7 +7,7 @@ import motor.motor_asyncio
 from pytgcalls import PyTgCalls
 
 FORMAT = f"[Yuvaraj] %(message)s"
-logging.basicConfig(level=logging.INFO, handlers=[logging.FileHandler('logs.txt'), logging.StreamHandler()], format=FORMAT)                                                    logging.StreamHandler()], format=FORMAT)
+logging.basicConfig(level=logging.INFO, handlers=[logging.FileHandler('logs.txt'), logging.StreamHandler()], format=FORMAT)]                                                logging.StreamHandler()], format=FORMAT)
 StartTime = time.time()
 
 MODULE = []
